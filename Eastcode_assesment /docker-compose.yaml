@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: db123
+
+  app:
+    image: my-todo-app
+    ports:
+      - "13100:5500"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL= postgres://user:password@db:5432/db123

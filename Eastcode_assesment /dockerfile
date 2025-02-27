@@ -1,0 +1,13 @@
+FROM node:21
+
+WORKDIR /usr/dev/path
+
+COPY package*.json .
+RUN node
+
+COPY . . 
+RUN npm install
+
+
+EXPOSE 5500
+CMD [ "npm","run","dev" ]
